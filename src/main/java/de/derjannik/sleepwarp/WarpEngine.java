@@ -62,7 +62,12 @@ final class WarpEngine extends BukkitRunnable implements Listener {
         boolean night = time >= NIGHT_START && time < NIGHT_END;
         boolean storm = world.isThundering();
         if (count.sleeping() == 0 || (!night && !storm)) {
-            stop(world);
+            // Players wake up on their own at sunrise, so a running warp that reaches day is a finished night
+            if (warpStart.containsKey(world.getUID()) && !night && !storm) {
+                morning(world);
+            } else {
+                stop(world);
+            }
             return;
         }
         int speed = speed(count);
@@ -79,9 +84,6 @@ final class WarpEngine extends BukkitRunnable implements Listener {
         }
         long extra = Math.min(speed - 1L, NIGHT_END - time);
         world.setFullTime(world.getFullTime() + extra);
-        if (world.getTime() >= NIGHT_END || world.getTime() < NIGHT_START) {
-            morning(world);
-        }
     }
 
     private void morning(World world) {
@@ -94,7 +96,7 @@ final class WarpEngine extends BukkitRunnable implements Listener {
         }
         String message = plugin.message("morning").replace("{seconds}", String.valueOf(seconds));
         for (Player player : world.getPlayers()) {
-            if (player.isSleeping() && config.getBoolean("morning.reset-phantoms")) {
+            if (config.getBoolean("morning.reset-phantoms")) {
                 player.setStatistic(Statistic.TIME_SINCE_REST, 0);
             }
             if (!message.isEmpty()) {
@@ -206,10 +208,19 @@ final class WarpEngine extends BukkitRunnable implements Listener {
     // Vanilla would jump straight to morning, the warp takes over instead
     @EventHandler(ignoreCancelled = true)
     public void onTimeSkip(TimeSkipEvent event) {
-        if (event.getSkipReason() == TimeSkipEvent.SkipReason.NIGHT_SKIP
+        if (isNightSkip(event)
                 && event.getWorld().getEnvironment() == World.Environment.NORMAL
                 && !plugin.getConfig().getStringList("disabled-worlds").contains(event.getWorld().getName())) {
             event.setCancelled(true);
+        }
+    }
+
+    // The skip reason enum moved to another class in 26.1, so it is read by name
+    private boolean isNightSkip(TimeSkipEvent event) {
+        try {
+            return "NIGHT_SKIP".equals(String.valueOf(event.getClass().getMethod("getSkipReason").invoke(event)));
+        } catch (ReflectiveOperationException e) {
+            return false;
         }
     }
 

@@ -19,6 +19,9 @@ public class SleepWarp extends JavaPlugin {
     public void onEnable() {
         Banner.print(this);
         saveDefaultConfig();
+        // Add keys from newer versions to an existing config
+        getConfig().options().copyDefaults(true);
+        saveConfig();
         this.engine = new WarpEngine(this);
 
         // Register listeners
