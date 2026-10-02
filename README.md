@@ -6,6 +6,10 @@ The night is not skipped, it fast-forwards. More sleepers, more speed.
 
 Free plugin for Spigot and Paper, 1.21 up to 26.x, one jar, no dependencies. Java 21 or newer.
 
+## Download
+
+[SpigotMC](https://www.spigotmc.org/resources/sleepwarp-the-night-fast-forwards.139298/) or the [latest GitHub release](../../releases/latest).
+
 ## Build
 
 ```
