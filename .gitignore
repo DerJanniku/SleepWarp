@@ -4,3 +4,7 @@ delivery/
 .DS_Store
 .idea/
 *.iml
+.project
+.settings/
+.classpath
+bin/
