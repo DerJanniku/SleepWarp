@@ -1,0 +1,21 @@
+name: SleepWarp
+version: ${version}
+main: de.derjannik.sleepwarp.SleepWarp
+api-version: "1.21"
+authors: [DerJannik]
+website: https://de.fiverr.com/s/xXgY29x
+description: The night is not skipped, it fast-forwards. The more players sleep, the faster it runs
+
+commands:
+  sleepwarp:
+    description: Show the sleep status and manage SleepWarp
+    usage: /sleepwarp [status|reload|info]
+    aliases: [sw]
+
+permissions:
+  sleepwarp.bypass:
+    description: Player is never counted as missing sleeper
+    default: false
+  sleepwarp.admin:
+    description: Reload the configuration
+    default: op

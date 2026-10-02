@@ -1,0 +1,39 @@
+# SleepWarp by DerJannik
+# Need a custom plugin? https://de.fiverr.com/s/xXgY29x
+
+speed:
+  # Time multiplier with a single sleeper and with everyone asleep
+  min: 4
+  max: 60
+  # 1.0 = linear, above 1 rewards the last sleepers more, below 1 the first ones
+  curve: 1.0
+
+disabled-worlds: []
+
+ignore:
+  # Players who did not move for this many minutes are not counted, 0 disables the check
+  afk-minutes: 5
+  spectators: true
+  creative: false
+
+morning:
+  clear-weather: true
+  # Sleepers will not be hunted by phantoms
+  reset-phantoms: true
+  sound: true
+
+# Storms during the day pass faster while players sleep
+warp-storms: true
+
+bossbar:
+  enabled: true
+  title: "&9☾ &fNight runs &b{speed}x &ffaster &7({sleeping}/{total} sleeping)"
+  # BLUE, GREEN, PINK, PURPLE, RED, WHITE, YELLOW
+  color: BLUE
+
+messages:
+  bed-enter: "&9☾ &b{player} &7went to bed. &f{sleeping}/{total} &7sleeping, night runs &b{speed}x &7faster."
+  morning: "&e☀ &7Good morning! The night passed in &f{seconds}s&7."
+  status: "&9☾ &f{sleeping}/{total} &7sleeping in &f{world}&7, current speed &b{speed}x&7."
+  reloaded: "&aSleepWarp configuration reloaded."
+  no-permission: "&cYou do not have permission to do that."
