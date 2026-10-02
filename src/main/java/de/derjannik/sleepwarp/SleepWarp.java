@@ -22,6 +22,7 @@ public class SleepWarp extends JavaPlugin {
         // Add keys from newer versions to an existing config
         getConfig().options().copyDefaults(true);
         saveConfig();
+        reloadConfig();
         this.engine = new WarpEngine(this);
 
         // Register listeners
