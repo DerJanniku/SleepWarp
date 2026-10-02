@@ -55,7 +55,6 @@ public class SleepWarp extends JavaPlugin {
             case "info" -> {
                 sender.sendMessage(ChatColor.BLUE + "SleepWarp " + ChatColor.GRAY + "v" + getDescription().getVersion()
                         + " by " + ChatColor.YELLOW + "DerJannik");
-                sender.sendMessage(ChatColor.GRAY + "Custom plugins: " + ChatColor.AQUA + Banner.FIVERR);
             }
             default -> {
                 World world = sender instanceof Player player ? player.getWorld() : Bukkit.getWorlds().get(0);

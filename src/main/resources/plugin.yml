@@ -3,7 +3,6 @@ version: ${version}
 main: de.derjannik.sleepwarp.SleepWarp
 api-version: "1.21"
 authors: [DerJannik]
-website: https://de.fiverr.com/s/xXgY29x
 description: The night is not skipped, it fast-forwards. The more players sleep, the faster it runs
 
 commands:

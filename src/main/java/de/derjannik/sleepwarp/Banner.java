@@ -4,8 +4,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 final class Banner {
 
-    static final String FIVERR = "https://de.fiverr.com/s/xXgY29x";
-
     private Banner() {
     }
 
@@ -20,7 +18,6 @@ final class Banner {
         plugin.getLogger().info("╚══════╝╚══════╝╚══════╝╚══════╝╚═╝      ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝");
         plugin.getLogger().info("");
         plugin.getLogger().info("                                                        by DerJannik");
-        plugin.getLogger().info("        Made by DerJannik | " + FIVERR);
         plugin.getLogger().info(line);
     }
 }
